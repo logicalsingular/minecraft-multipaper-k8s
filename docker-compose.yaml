@@ -1,0 +1,30 @@
+services:
+  multipaper-master:
+    restart: always
+    image: multipaper-master:0.0.1
+    build: Multipaper-master-database/.
+    volumes:
+      - master:/app
+    ports:
+      - "35353:35353"
+    networks:
+      - multipaper-networking
+
+  multipaper-server:
+    restart: always
+    image: multipaper-server:0.0.1
+    build: Multipaper-server/.
+    volumes:
+      - slave:/app
+    networks:
+      - multipaper-networking
+
+networks:
+  multipaper-networking:
+    name: multipaper-networking
+      #     driver: bridge
+    external: true
+
+volumes:
+  master:
+  slave:
