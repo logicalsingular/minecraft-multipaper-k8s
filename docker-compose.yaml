@@ -7,6 +7,7 @@ services:
       - master:/app
     ports:
       - "35353:35353"
+      - "25565:25565"
     networks:
       - multipaper-networking
 
@@ -14,17 +15,16 @@ services:
     restart: always
     image: multipaper-server:0.0.1
     build: Multipaper-server/.
-    volumes:
-      - slave:/app
     networks:
       - multipaper-networking
+    depends_on:
+      - multipaper-master
 
 networks:
   multipaper-networking:
     name: multipaper-networking
-      #     driver: bridge
+    driver: bridge
     external: true
 
 volumes:
   master:
-  slave:
