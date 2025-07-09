@@ -12,6 +12,7 @@
 
 world-settings:
   default:
+    verbose: false
     below-zero-generation-in-existing-chunks: true
     thunder-chance: 100000
     view-distance: default
